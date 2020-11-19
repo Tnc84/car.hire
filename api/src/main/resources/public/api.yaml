@@ -1,36 +1,170 @@
 openapi: 3.0.1
 info:
-  title: Car Hire API
-  version: 0.1.0
+  title: User Management API
+  version: 1.0.0
   contact:
-    name: Your name here
-  description: Car Hire API
+    name: Tancau Bogdan
+    email: tncbogdan@gmail.com
+  description: This is the user management api
 servers:
-  - url: http://localhost:{port}
+  - url: 'http://localhost:{port}'
     description: local environment
     variables:
       port:
         default: '8080'
+  - url: 'https://devserver.domain.com/{custom-base-path}'
+    description: dev environment
+    variables:
+      custom-base-path:
+        default: user
 tags:
-  - name: sample
-    description: Sample resource endpoint
+  - name: user
+    description: User resource
 paths:
-  /sample:
+  /user:
     get:
       tags:
-        - sample
-      summary: get sample
-      description: returns a list of all the sample objects, without any filtering
-      operationId: getSamples
+        - user
+      summary: get all users
+      operationId: getUsers
+      description: Return a list of all users
       responses:
-        '200':
+        '201':
           description: success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SampleDTO'
+                  $ref: '#/components/schemas/UserDTO'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - user
+      summary: Add a new user
+      operationId: addUser
+      description: Add a new user and return it
+      requestBody:
+        description: The data of the user to insert
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+      responses:
+        '201':
+          description: created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+        - user
+      summary: update an existing user
+      description: Updating the name of an existing user and return it
+      operationId: updateUser
+      requestBody:
+        description: The data of the user to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+      responses:
+        '200':
+          description: created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    patch:
+      tags:
+        - user
+      summary: patch fields from user
+      description: Patch the fields of an existing user
+      operationId: patchUser
+      requestBody:
+        description: The data of the user to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+      responses:
+        '200':
+          description: created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /user/{id}:
+    get:
+      tags:
+        - user
+      summary: get user by id
+      description: return the user by id
+      operationId: getUserById
+      parameters:
+        - in: path
+          name: id
+          description: user id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - user
+      summary: removes a user
+      description: deletes a user identified by id
+      operationId: deleteUser
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: success
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -72,14 +206,38 @@ components:
           type: string
         message:
           type: string
-    SampleDTO:
+    UserDTO:
       type: object
+      required:
+        - name
       properties:
         id:
           type: integer
           format: int32
-          description: id of the sample
-        name:
+          description: id of the student
+        email:
           type: string
-          example: Sample name
-          description: full name of the sample
+          description: user email
+        password:
+          type: string
+          description: user password
+        username:
+          type: string
+          example: Tancau Bogdan
+          description: full name of the user
+        first name:
+          type: string
+        last name:
+          type: string
+        country:
+          type: string
+          description: country of rezidence
+        driveer`s license:
+          type: string
+        status:
+          type: string
+          description: “Order Status”
+          enum:
+            - “ ACTIVE”
+            - “DELETED”
+
