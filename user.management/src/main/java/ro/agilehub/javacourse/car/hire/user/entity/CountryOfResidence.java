@@ -10,7 +10,7 @@ import java.util.List;
 
 @javax.persistence.Entity
 @Table(name = "country_id")
-public class Entity {
+public class CountryOfResidence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -59,10 +59,10 @@ public class Entity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Entity entity)) return false;
+        if (!(o instanceof CountryOfResidence countryOfResidence)) return false;
 
         return new EqualsBuilder()
-                .append(id, entity.id)
+                .append(id, countryOfResidence.id)
                 .isEquals();
     }
 
