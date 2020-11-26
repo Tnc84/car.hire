@@ -48,4 +48,19 @@ public class Make {
     public void setStatusCar(StatusCar statusCar) {
         this.statusCar = statusCar;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Make)) return false;
+
+        Make make = (Make) o;
+
+        return id == make.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

@@ -14,6 +14,8 @@ import java.util.List;
 @RestController
 public class UserController implements UsersApi {
 
+
+
        @Override
     public ResponseEntity<List<UserDTO>> getUsers() {
         return ResponseEntity.ok(Collections.singletonList(buildDummyUser()));
@@ -34,7 +36,7 @@ public class UserController implements UsersApi {
         return ResponseEntity.ok(buildDummyUser());
     }
 
-    //    @Override
+//    @Override
     public ResponseEntity<UserDTO> patchUser(@Valid UserDTO userDTO) {
         return ResponseEntity.ok(buildDummyUser());
     }

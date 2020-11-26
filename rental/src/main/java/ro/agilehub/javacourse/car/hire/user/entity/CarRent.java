@@ -1,11 +1,15 @@
 package ro.agilehub.javacourse.car.hire.user.entity;
 
-import org.springframework.context.annotation.ComponentScan;
+import jdk.jfr.DataAmount;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "car_rent")
+@Data
+@EqualsAndHashCode(of = "id")
 public class CarRent {
 
     @Id
@@ -14,33 +18,9 @@ public class CarRent {
 
     @ManyToOne
     @JoinColumn(name = "make_id")
-    Make make;
+    private Make make;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    CountryOfResidence countryOfResidence;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Make getMake() {
-        return make;
-    }
-
-    public void setMake(Make make) {
-        this.make = make;
-    }
-
-    public CountryOfResidence getCountryOfResidence() {
-        return countryOfResidence;
-    }
-
-    public void setCountryOfResidence(CountryOfResidence countryOfResidence) {
-        this.countryOfResidence = countryOfResidence;
-    }
+    private User user;
 }
