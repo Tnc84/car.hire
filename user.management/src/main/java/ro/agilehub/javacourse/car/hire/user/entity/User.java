@@ -31,14 +31,15 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Transient
     @Column(name = "password")
     private String password;
 
     @Column(name = "status")
     private String status;
 
-//    @ManyToOne
-    @Column(name = "country_id")
-    private int countryId;
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
 
 }

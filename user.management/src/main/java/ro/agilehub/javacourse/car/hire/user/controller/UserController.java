@@ -1,7 +1,6 @@
 package ro.agilehub.javacourse.car.hire.user.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
@@ -13,8 +12,6 @@ import java.util.List;
 
 @RestController
 public class UserController implements UsersApi {
-
-
 
        @Override
     public ResponseEntity<List<UserDTO>> getUsers() {

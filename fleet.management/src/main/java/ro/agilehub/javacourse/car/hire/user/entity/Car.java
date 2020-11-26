@@ -1,25 +1,25 @@
 package ro.agilehub.javacourse.car.hire.user.entity;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "car_rent")
+@Table(name = "car")
 @Data
 @EqualsAndHashCode(of = "id")
-public class CarRent {
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn
+    private CarClass carClass;
+
+    @JoinColumn
+    private StatusCar statusCar;
+
 }
