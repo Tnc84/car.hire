@@ -2,10 +2,8 @@ package ro.agilehub.javacourse.car.hire.user.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -16,30 +14,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name")
     private String lastName;
-
-    @Column(name = "user_name")
     private String userName;
-
-    @Column(name = "driver_license")
     private String driverLicense;
-
-    @Column(name = "email")
     private String email;
 
     @Transient
     @Column(name = "password")
     private String password;
 
-    @Column(name = "status")
-    private String status;
-
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
 
+    private UserEnum status;
 }

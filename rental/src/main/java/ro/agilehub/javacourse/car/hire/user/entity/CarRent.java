@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "car_rent")
@@ -17,9 +18,13 @@ public class CarRent {
 
     @ManyToOne
     @JoinColumn(name = "car_id")
-    private Car car;
+    private Car carId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User userId;
+
+    private OffsetDateTime startDate;
+    private OffsetDateTime endDate;
+    private StatusCar status;
 }

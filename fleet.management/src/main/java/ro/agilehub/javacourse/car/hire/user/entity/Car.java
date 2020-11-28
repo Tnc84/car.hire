@@ -1,4 +1,5 @@
 package ro.agilehub.javacourse.car.hire.user.entity;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,13 +14,16 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private String name;
+    private String make;
+    private String model;
+    private String year;
+    private String mileage;
+    private String fuel;
 
     @JoinColumn
-    private CarClass carClass;
+    private CarClass carClazz;
 
     @JoinColumn
-    private StatusCar statusCar;
+    private StatusCar status;
 
 }

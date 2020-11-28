@@ -2,11 +2,11 @@ package ro.agilehub.javacourse.car.hire.user.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
-import javax.persistence.Entity;
 
 @Entity
-@Table(name="country")
+@Table(name = "country")
 @Data
 @EqualsAndHashCode(of = "id")
 public class Country {
@@ -15,9 +15,9 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+//    @Column(name = "name")
     private String name;
 
-    @Column(name = "iso_code")
+//    @Column(name = "iso_code")
     private String isoCode;
 }
