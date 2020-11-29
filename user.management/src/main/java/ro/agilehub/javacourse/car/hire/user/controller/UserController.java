@@ -22,29 +22,47 @@ public class UserController implements UsersApi {
     @Override
     @GetMapping()
     public ResponseEntity<List<UserDTO>> getUsers() {
-        var getUsers = userService.findAll();
-        return ResponseEntity.ok(getUsers.stream().map(userEntity -> {
-            var result = new UserDTO();
-            result.setId(userEntity.getId());
-            result.setUsername(userEntity.getUserName());
-            result.setCountry(userEntity.getCountry().getName());
-            return result;
-        }).collect(Collectors.toList()));
+        var user = userService.findAll();
+        return ResponseEntity.ok(user.stream().map(users -> {
+                    var getAllUsers = new UserDTO();
+                    getAllUsers.setId(getAllUsers.getId());
+                    getAllUsers.setUserName(getAllUsers.getUserName());
+                    getAllUsers.setCountry(getAllUsers.getCountry());
+                    return getAllUsers;
+                }).collect(Collectors.toList())
+        );
     }
 
     @Override
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> getUserById(Integer id) {
-        return ResponseEntity.ok(buildDummyUser());
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Integer id) {
+        var userDTO = new UserDTO();
+        if (userDTO.getId().equals(id)) {
+            userService.findById(id);
+        }
+        return ResponseEntity.ok(userDTO);
     }
 
     @Override
     @PostMapping("/add")
     public ResponseEntity<UserDTO> addUser(@Valid UserDTO userDTO) {
-        return ResponseEntity.ok(buildDummyUser());
+        var user = userService.addUser();
+        return ResponseEntity.ok(user.stream().map(users -> {
+                    var getNewUsers = new UserDTO();
+                    getNewUsers.setId(getNewUsers.getId());
+                    getNewUsers.setFirstName(getNewUsers.getFirstName());
+                    getNewUsers.setLastName(getNewUsers.getLastName());
+                    getNewUsers.setUserName(getNewUsers.getUserName());
+                    getNewUsers.setEmail(getNewUsers.getEmail());
+                    getNewUsers.setDriverLicenseNo(getNewUsers.getDriverLicenseNo());
+                    getNewUsers.setPassword(getNewUsers.getPassword());
+                    getNewUsers.setCountry(getNewUsers.getCountry());
+                    return;
+                }).collect(Collectors.toList())
+        );
     }
 
-    //    @Override
+    @Override
     @PatchMapping
     public ResponseEntity<UserDTO> patchUser(@Valid UserDTO userDTO) {
         return ResponseEntity.ok(buildDummyUser());
@@ -56,11 +74,10 @@ public class UserController implements UsersApi {
         return ResponseEntity.ok(null);
     }
 
-
     private UserDTO buildDummyUser() {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(1);
-        userDTO.setUsername("My first sample");
+        userDTO.setUserName("My first sample");
         return userDTO;
     }
 }

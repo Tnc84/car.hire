@@ -482,7 +482,7 @@ components:
         password:
           type: string
           format: password
-        username:
+        userName:
           type: string
         firstName:
           type: string

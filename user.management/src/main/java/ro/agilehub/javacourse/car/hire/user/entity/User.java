@@ -2,6 +2,7 @@ package ro.agilehub.javacourse.car.hire.user.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -29,4 +30,5 @@ public class User {
     private Country country;
 
     private UserEnum status;
+//    private boolean active = true;
 }
