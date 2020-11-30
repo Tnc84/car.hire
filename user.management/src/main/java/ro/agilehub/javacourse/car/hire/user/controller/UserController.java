@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController implements UsersApi {
 
     @Autowired
@@ -36,7 +36,7 @@ public class UserController implements UsersApi {
 //        );
 //    }
     @Override
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<UserDTO>> getUsers() {
         return ResponseEntity.ok(userService.findAll()
                 .stream()
