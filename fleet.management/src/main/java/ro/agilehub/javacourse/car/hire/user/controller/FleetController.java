@@ -1,56 +1,52 @@
 package ro.agilehub.javacourse.car.hire.user.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.NativeWebRequest;
 import ro.agilehub.javacourse.car.hire.api.model.CarDTO;
-import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
 import ro.agilehub.javacourse.car.hire.api.specification.CarsApi;
+import ro.agilehub.javacourse.car.hire.user.service.CarService;
+import ro.agilehub.javacourse.car.hire.user.service.CarServiceImpl;
 
-import javax.validation.Valid;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
+import static java.util.stream.Collectors.toList;
 
 @RestController
 public class FleetController implements CarsApi {
 
-
-    public ResponseEntity<List<UserDTO>> getUsers() {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(1);
-        userDTO.setUserName("My first sample");
-        return ResponseEntity.ok(Collections.singletonList(userDTO));
-    }
-
-    @Override
-    public Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
-
-    @Override
-    public ResponseEntity<CarDTO> addCar(@Valid CarDTO carDTO) {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<CarDTO> deleteCar(Integer id) {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<CarDTO> getCarById(Integer id) {
-        return null;
-    }
+    @Autowired
+    private CarService carService;
+    private CarServiceImpl carServiceImpl;
 
     @Override
     public ResponseEntity<List<CarDTO>> getCars() {
-        return null;
+        var getAllCars = carService.findAll();
+        return ResponseEntity.ok(getAllCars
+                .stream()
+                .map(getCars -> {
+                    var result = new CarDTO();
+                    result.setMake(getCars.getMake());
+                    result.setModel(getCars.getModel());
+                    result.setStatus(CarDTO.StatusEnum.ACTIVE);
+                    return result;
+                }).collect(toList())
+        );
     }
 
     @Override
-    public ResponseEntity<CarDTO> patchCar(Integer id, @Valid CarDTO carDTO) {
-        return null;
+    public ResponseEntity<CarDTO> getCarById(String id) {
+        CarDTO carDTO = new CarDTO();
+        carDTO.setId(carDTO.getId());
+        return ResponseEntity.ok(carDTO);
     }
+
+//    public ResponseEntity<CarDTO> getCarId() {
+//        CarDTO carDTO = new CarDTO();
+//        carDTO.setId(carDTO.getId());
+//        return ResponseEntity.ok(carDTO);
+//    }
+
+
 }
