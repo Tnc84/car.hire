@@ -2,29 +2,23 @@ package ro.agilehub.javacourse.car.hire.user.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.persistence.*;
 import java.time.OffsetDateTime;
 
-@Entity
-@Table(name = "car_rent")
-@Data
+@Document(collection = "car_rent")
 @EqualsAndHashCode(of = "id")
+@Data
 public class CarRent {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Field("_id")
     private int id;
-
-    @ManyToOne
-    @JoinColumn(name = "car_id")
-    private Car carId;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User userId;
-
+//    private Car carId;
+//    private User userId;
     private OffsetDateTime startDate;
     private OffsetDateTime endDate;
-    private StatusCar status;
+//    private StatusCar status;
 }

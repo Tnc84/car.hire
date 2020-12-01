@@ -494,7 +494,7 @@ components:
           type: string
         status:
           type: string
-          enum: [ACTIVE, DELETED]
+#          enum: [ACTIVE, DELETED]
 
     CarDTO:
       type: object

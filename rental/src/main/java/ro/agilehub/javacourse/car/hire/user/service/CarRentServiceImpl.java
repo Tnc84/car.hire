@@ -1,8 +1,8 @@
 package ro.agilehub.javacourse.car.hire.user.service;
 
 import org.springframework.stereotype.Service;
-import ro.agilehub.javacourse.car.hire.user.repository.CarRentRepository;
 import ro.agilehub.javacourse.car.hire.user.entity.CarRent;
+import ro.agilehub.javacourse.car.hire.user.repository.CarRentRepository;
 
 import java.util.List;
 
@@ -18,6 +18,6 @@ public class CarRentServiceImpl implements CarRentService {
 
     @Override
     public CarRent findById(Integer id) {
-        return carRentRepository.getOne(id);
+        return carRentRepository.findAll().get(id);
     }
 }
