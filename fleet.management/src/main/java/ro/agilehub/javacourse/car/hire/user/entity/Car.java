@@ -7,8 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 
-@Document(collection = "car")
 @Data
+@Document(collection = "car")
 @EqualsAndHashCode(of = "id")
 public class Car {
 
