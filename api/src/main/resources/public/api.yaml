@@ -467,6 +467,19 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorDTO'
   schemas:
+    CountryDTO:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        isoCode:
+          type: string
+
     UserDTO:
       type: object
       required:
@@ -489,7 +502,7 @@ components:
         lastName:
           type: string
         country:
-          type: string
+          type: countryDTO
         driverLicenseNo:
           type: string
         status:
@@ -516,7 +529,7 @@ components:
           format: int32
         fuel:
           type: string
-        carClazz:
+        carClass:
           type: string
         status:
           type: string

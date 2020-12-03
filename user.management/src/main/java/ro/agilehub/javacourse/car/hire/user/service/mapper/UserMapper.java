@@ -9,8 +9,8 @@ import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
 @Mapper(componentModel = "spring", uses = {CountryMapper.class, ObjectIdMapper.class})
 public interface UserMapper {
 
-    @Mapping(target = "country", source = "country")
     @Mapping(target = "id", source = "user.id")
     @Mapping(target = "userName", source = "user.userName")
+    @Mapping(target = "country", source = "country")
     UserDomain toDomainObject(User user, Country country);
 }
