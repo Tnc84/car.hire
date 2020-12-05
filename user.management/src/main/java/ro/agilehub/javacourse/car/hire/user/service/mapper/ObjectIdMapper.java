@@ -13,6 +13,13 @@ public interface ObjectIdMapper {
         return new ObjectId(id);
     }
 
+    default ObjectId intToObjectId(Integer id) {
+        if (id == null) {
+            return null;
+        }
+        return new ObjectId(String.valueOf(id));
+    }
+
     default String toStringId(ObjectId id) {
         if (id == null) {
             return null;

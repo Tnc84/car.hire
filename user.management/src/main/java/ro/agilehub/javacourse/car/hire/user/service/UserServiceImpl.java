@@ -7,6 +7,7 @@ import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
 import ro.agilehub.javacourse.car.hire.user.entity.User;
 import ro.agilehub.javacourse.car.hire.user.repository.CountryRepository;
 import ro.agilehub.javacourse.car.hire.user.repository.UserRepository;
+import ro.agilehub.javacourse.car.hire.user.service.mapper.ObjectIdMapper;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.UserMapper;
 import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
 
@@ -25,17 +26,28 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    ObjectIdMapper objectIdMapper;
+
     @Override
     public List<UserDomain> findAll() {
         return userRepository.findAll()
                 .stream()
-                .map(this::map)
+                .map(userMapper::returnUserDomain)
                 .collect(Collectors.toList());
     }
 
+//    @Override
+//    public UserDomain findById(String id) {
+//        var findId = new UserDomain();
+//        return userRepository.findById(new ObjectId(id))
+//                .map(userMapper::returnUserDomain)
+//                .orElseThrow();
+//    }
+
     @Override
-    public UserDomain findById(Integer id) {
-        return userRepository.findById(new ObjectId(String.valueOf(id)))
+    public UserDomain findById(String id) {
+        return userRepository.findById(new ObjectId(id))
                 .map(this::map)
                 .orElseThrow();
     }
@@ -49,7 +61,7 @@ public class UserServiceImpl implements UserService {
         var country = countryRepository
                 .findById(new ObjectId(String.valueOf(user.getCountry())))
                 .orElse(null);
-        return userMapper.toDomainObject(user, country);
+        return userMapper.toDomain(user, country);
     }
 }
 

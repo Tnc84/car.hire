@@ -12,7 +12,7 @@ public interface UserService {
 
     List<UserDomain> findAll();
 
-    UserDomain findById(Integer id);
+    UserDomain findById(String id);
 
     UserDTO addUser(User user);
 
