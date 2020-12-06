@@ -473,8 +473,8 @@ components:
         - name
       properties:
         id:
-          type: integer
-          format: int32
+          type: string
+          format: id
         name:
           type: string
         isoCode:
@@ -486,8 +486,8 @@ components:
         - name
       properties:
         id:
-          type: integer
-          format: int32
+          type: string
+          format: id
         email:
           type: string
           format: email

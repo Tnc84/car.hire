@@ -7,7 +7,6 @@ import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
 import ro.agilehub.javacourse.car.hire.user.entity.User;
 import ro.agilehub.javacourse.car.hire.user.repository.CountryRepository;
 import ro.agilehub.javacourse.car.hire.user.repository.UserRepository;
-import ro.agilehub.javacourse.car.hire.user.service.mapper.ObjectIdMapper;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.UserMapper;
 import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
 
@@ -21,47 +20,46 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Autowired
-    CountryRepository countryRepository;
-
-    @Autowired
     UserMapper userMapper;
 
     @Autowired
-    ObjectIdMapper objectIdMapper;
+    CountryRepository countryRepository;
 
     @Override
     public List<UserDomain> findAll() {
-        return userRepository.findAll()
+        var users = userRepository.findAll();
+        return users
                 .stream()
-                .map(userMapper::returnUserDomain)
+                .map(userMapper::toDomain)
                 .collect(Collectors.toList());
     }
 
 //    @Override
 //    public UserDomain findById(String id) {
 //        var findId = new UserDomain();
-//        return userRepository.findById(new ObjectId(id))
+//        return userRepository.findById(new ObjectId(String.valueOf(user.getId())))
 //                .map(userMapper::returnUserDomain)
 //                .orElseThrow();
 //    }
-
-    @Override
-    public UserDomain findById(String id) {
-        return userRepository.findById(new ObjectId(id))
-                .map(this::map)
-                .orElseThrow();
-    }
 
     @Override
     public UserDTO addUser(User user) {
         return null;
     }
 
+    @Override
+    public UserDomain findById(String id) {
+        var user =  userRepository.findById(new ObjectId(id));
+        return  user
+                .map(this::map)
+                .orElseThrow();
+    }
+
     private UserDomain map(User user) {
         var country = countryRepository
                 .findById(new ObjectId(String.valueOf(user.getCountry())))
                 .orElse(null);
-        return userMapper.toDomain(user, country);
+        return userMapper.toDomain(user);
     }
 }
 

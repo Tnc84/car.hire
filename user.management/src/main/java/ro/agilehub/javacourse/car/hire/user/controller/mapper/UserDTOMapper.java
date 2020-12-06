@@ -2,9 +2,7 @@ package ro.agilehub.javacourse.car.hire.user.controller.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
-import ro.agilehub.javacourse.car.hire.user.entity.Country;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.CountryMapper;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.ObjectIdMapper;
 import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
@@ -13,19 +11,17 @@ import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
 public interface UserDTOMapper {
 
     @Mapping(target = "id", source = "userDTO.id")
-    @Mapping(target = "country", source = "country")
-    UserDomain toUserDomain(UserDTO userDTO, Country country);
+    UserDomain toUserDomain(UserDTO userDTO);
 
     @Mapping(target = "id", source = "userDomain.id")
-    @Mapping(target = "country", source = "country")
-    UserDTO toUserDTO(UserDomain userDomain, Country country);
+    UserDTO toUserDTO(UserDomain userDomain);
 
-    @Named("returnDTO")
-    default UserDTO returnDTO(UserDomain userDomain){
-        var getAllUsers = new UserDTO();
-        getAllUsers.setId(getAllUsers.getId());
-        getAllUsers.setUserName(getAllUsers.getUserName());
-        getAllUsers.setCountry(getAllUsers.getCountry());
-        return getAllUsers;
-    }
+//    @Named("returnDTO")
+//    default UserDTO returnDTO(UserDomain userDomain){
+//        var getAllUsers = new UserDTO();
+//        getAllUsers.setId(Integer.valueOf(userDomain.getId()));
+//        getAllUsers.setUserName(getAllUsers.getUserName());
+//        getAllUsers.setCountry(getAllUsers.getCountry());
+//        return getAllUsers;
+//    }
 }

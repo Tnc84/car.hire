@@ -19,7 +19,7 @@ public class RentalController implements RentalsApi {
 
     public ResponseEntity<List<UserDTO>> getUsers() {
         UserDTO userDTO = new UserDTO();
-        userDTO.setId(1);
+        userDTO.setId("1");
         userDTO.setUserName("My first sample");
         return ResponseEntity.ok(Collections.singletonList(userDTO));
     }

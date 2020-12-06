@@ -29,17 +29,15 @@ public class UserController implements UsersApi {
     public ResponseEntity<List<UserDTO>> getUsers() {
         var userList = userServiceImpl.findAll();
         return ResponseEntity.ok(userList.stream().map(
-                userDTOMapper::returnDTO
+                userDTOMapper::toUserDTO
                 ).collect(Collectors.toList())
         );
     }
 
-    @GetMapping(value = "{/id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity getById(@PathVariable("id") String id){
         var findById = userServiceImpl.findById(id);
-        return ResponseEntity.ok(findById.getId()
-
-        );
+        return ResponseEntity.ok(findById.getId());
     }
 
     public ResponseEntity<UserDTO> addUser() {
