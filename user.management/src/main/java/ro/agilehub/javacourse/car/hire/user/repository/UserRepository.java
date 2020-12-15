@@ -6,4 +6,6 @@ import ro.agilehub.javacourse.car.hire.user.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+
+//    Optional<User> findByUsernameIgnoreCase(String username);
 }

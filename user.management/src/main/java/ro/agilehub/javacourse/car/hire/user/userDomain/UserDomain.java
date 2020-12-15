@@ -1,33 +1,20 @@
-package ro.agilehub.javacourse.car.hire.user.entity;
+package ro.agilehub.javacourse.car.hire.user.userDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import ro.agilehub.javacourse.car.hire.user.entity.Country;
+import ro.agilehub.javacourse.car.hire.user.entity.UserEnum;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "user")
 @Data
 @EqualsAndHashCode(of = "id")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDomain {
     private int id;
-
     private String firstName;
     private String lastName;
     private String userName;
     private String driverLicense;
     private String email;
-
-//    @Transient
-//    @Column(name = "password")
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "country_id")
     private Country country;
-
     private UserEnum status;
-//    private boolean active = true;
 }
