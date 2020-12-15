@@ -47,9 +47,9 @@ public class UserController implements UsersApi {
     }
 
 //    @PostMapping(value = "addUser")
-//    public ResponseEntity<UserDTO> addUser(@RequestBody UserDomain userDomain) {
-//        var addUsers = userService.addUser(userDomain);
-//        return ResponseEntity.ok(addUs);
-//}
+//    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO) {
+//        var addUsers = userDTOMapper.toNewDomain(userDTO);
+//        return ResponseEntity.ok(addUsers);
+//    }
 }
 

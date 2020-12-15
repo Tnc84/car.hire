@@ -28,6 +28,6 @@ public class User {
     @JoinColumn(name = "country_id")
     private Country country;
 
-    private UserEnum status;
+    private String status;
 //    private boolean active = true;
 }

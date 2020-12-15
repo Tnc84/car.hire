@@ -7,6 +7,7 @@ import ro.agilehub.javacourse.car.hire.user.entity.User;
 import ro.agilehub.javacourse.car.hire.user.repository.UserRepository;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.UserDomainMapper;
 import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
+import ro.agilehub.javacourse.car.hire.user.userDomain.UserStatusDomain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,32 +33,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDomain findById(Integer id) {
-//        var getUser = userRepository.findById(id);
-//        return getUser.map(userDomainMapper::toDomain).orElseThrow();
+        var getUser = userRepository.findById(id);
+        return getUser.map(userDomainMapper::toDomain).orElseThrow();
 
-        return userDomainMapper.toDomain(userRepository.getOne(id));
+//        return userDomainMapper.toDomain(userRepository.getOne(id));
     }
 
     @Override
-    public User addUser(UserDomain UserDomain) {
-        var addUser = new User();
-        addUser.setFirstName(UserDomain.getUserName());
-        addUser.setLastName(UserDomain.getLastName());
-        addUser.setEmail(UserDomain.getEmail());
-        addUser.setUserName(UserDomain.getUserName());
-        addUser.setPassword(UserDomain.getPassword());
-        userRepository.save(addUser);
-        return addUser;
+    public int addUser(UserDomain userDomain) {
+        var addUser = userDomainMapper.toUser(userDomain);
+        addUser = userRepository.save(addUser);
+        return addUser.getId();
     }
 
     @Override
     public void patchUser(Integer id, UserDomain updateExample) {
-
+        User user = userRepository.getOne(id);
+        userDomainMapper.patchUser(updateExample, user);
+        userRepository.save(user);
     }
 
     @Override
     public void deleteUser(Integer id) {
-
+        User user = userRepository.getOne(id);
+        user.setStatus(UserStatusDomain.DELETED.name());
+        userRepository.save(user);
     }
 }
 
