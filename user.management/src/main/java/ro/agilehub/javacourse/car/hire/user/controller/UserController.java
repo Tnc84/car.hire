@@ -2,8 +2,8 @@ package ro.agilehub.javacourse.car.hire.user.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +17,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@PreAuthorize("hasAuthority('MANAGER')")
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController implements UsersApi {
 
-    @Autowired
-    UserService userService;
-    @Autowired
-    UserDTOMapper userDTOMapper;
+    private final UserService userService;
+    private final UserDTOMapper userDTOMapper;
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> getUsers() {

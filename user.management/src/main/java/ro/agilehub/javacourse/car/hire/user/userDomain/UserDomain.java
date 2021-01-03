@@ -2,7 +2,6 @@ package ro.agilehub.javacourse.car.hire.user.userDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ro.agilehub.javacourse.car.hire.user.entity.Country;
 
 @Data
 @EqualsAndHashCode(of = "id")
@@ -14,6 +13,6 @@ public class UserDomain {
     private String driverLicense;
     private String email;
     private String password;
-    private Country country;
-    private String status;
+    private CountryDomain country;
+    private UserStatusDomain status;
 }
