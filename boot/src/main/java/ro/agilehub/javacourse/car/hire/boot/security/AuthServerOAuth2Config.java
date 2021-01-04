@@ -46,7 +46,7 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
     }
 
     /**
-     * Configure the accepted cients and where they are stored.
+     * Configure the accepted clients and where they are stored.
      * We've used inMemory storage, but a database could be used as well for adding clients dynamically
      *
      * @param clients

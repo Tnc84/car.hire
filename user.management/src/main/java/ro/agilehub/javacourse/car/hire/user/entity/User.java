@@ -21,15 +21,11 @@ public class User {
     private String userName;
     private String driverLicense;
     private String email;
-
-//    @Transient
-//    @Column(name = "password")
     private String password;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
 
-    private String status;
-//    private boolean active = true;
+    private UserEnum status;
 }

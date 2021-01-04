@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.agilehub.javacourse.car.hire.user.entity.User;
+import ro.agilehub.javacourse.car.hire.user.entity.UserEnum;
 import ro.agilehub.javacourse.car.hire.user.repository.UserRepository;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.UserDomainMapper;
 import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
-import ro.agilehub.javacourse.car.hire.user.userDomain.UserStatusDomain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Integer id) {
         User user = userRepository.getOne(id);
-        user.setStatus(UserStatusDomain.DELETED.name());
+        user.setStatus(UserEnum.DENIED);
         userRepository.save(user);
     }
 }
