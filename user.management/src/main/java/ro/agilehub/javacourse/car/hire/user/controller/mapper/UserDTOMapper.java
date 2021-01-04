@@ -22,4 +22,7 @@ public interface UserDTOMapper {
     @Mapping(target = "userName", ignore = true)
     @Mapping(target = "password", ignore = true)
     UserDomain toUserDomain(UserDTO userDTO);
+
+    @Mapping(target = "id", ignore = true)
+    UserDomain toNewUserDO(UserDTO userDTO);
 }

@@ -10,11 +10,13 @@ public interface UserService {
 
     List<UserDomain> findAllUsers();
 
-    UserDomain findById(Integer id);
+    Integer createNewUser(UserDomain example);
 
-    int addUser(UserDomain UserDomain);
+    UserDomain getById(Integer id);
 
     void patchUser(Integer id, UserDomain updateExample);
 
     void deleteUser(Integer id);
+
+    UserDomain getByUsername(String username);
 }
