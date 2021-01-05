@@ -1,4 +1,4 @@
-package ro.agilehub.javacourse.car.hire.user.entity;
+package ro.agilehub.javacourse.car.hire.user.repository.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Data
 @EqualsAndHashCode(of = "id")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

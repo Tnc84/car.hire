@@ -1,13 +1,14 @@
 package ro.agilehub.javacourse.car.hire.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.agilehub.javacourse.car.hire.user.entity.User;
-import ro.agilehub.javacourse.car.hire.user.entity.UserEnum;
 import ro.agilehub.javacourse.car.hire.user.repository.definition.UserRepository;
+import ro.agilehub.javacourse.car.hire.user.repository.entity.User;
+import ro.agilehub.javacourse.car.hire.user.repository.entity.UserEnum;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.UserDomainMapper;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;
 import ro.agilehub.javacourse.car.hire.user.service.validator.UserServiceValidator;
-import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -17,8 +18,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     UserRepository userRepository;
+    @Autowired
     UserDomainMapper userDomainMapper;
+    @Autowired
     UserServiceValidator userServiceValidator;
 
     @Override
@@ -62,8 +66,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDomain getByUsername(String username) {
-        return userDomainMapper.toDomain(userRepository.findByUsernameIgnoreCase(username).orElseThrow());
+    public UserDomain getByUsername(String userName) {
+        return userDomainMapper.toDomain(userRepository.findByUserNameIgnoreCase(userName).orElseThrow());
     }
 }
 

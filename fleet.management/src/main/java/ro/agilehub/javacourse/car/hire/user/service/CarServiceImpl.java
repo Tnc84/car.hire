@@ -2,8 +2,8 @@ package ro.agilehub.javacourse.car.hire.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.agilehub.javacourse.car.hire.user.entity.Car;
 import ro.agilehub.javacourse.car.hire.user.repository.CarRepository;
+import ro.agilehub.javacourse.car.hire.user.repository.entity.Car;
 
 import java.util.List;
 

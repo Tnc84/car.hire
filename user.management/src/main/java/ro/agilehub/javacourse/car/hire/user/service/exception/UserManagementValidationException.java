@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class UserManagementValidationException {
+public class UserManagementValidationException extends RuntimeException{
     private final List<ErrorCode> errorCodes;
 
     public UserManagementValidationException(List<ErrorCode> errorCodes) {

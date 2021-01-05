@@ -3,8 +3,8 @@ package ro.agilehub.javacourse.car.hire.user.controller.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
-import ro.agilehub.javacourse.car.hire.user.userDomain.CountryDomain;
-import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.CountryDomain;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;
 
 import java.util.List;
 

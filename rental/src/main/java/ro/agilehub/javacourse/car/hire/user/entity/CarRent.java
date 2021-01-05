@@ -2,6 +2,9 @@ package ro.agilehub.javacourse.car.hire.user.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import ro.agilehub.javacourse.car.hire.user.repository.entity.Car;
+import ro.agilehub.javacourse.car.hire.user.repository.entity.StatusCar;
+import ro.agilehub.javacourse.car.hire.user.repository.entity.User;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;

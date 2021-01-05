@@ -1,7 +1,8 @@
-package ro.agilehub.javacourse.car.hire.user.entity;
+package ro.agilehub.javacourse.car.hire.user.repository.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import ro.agilehub.javacourse.car.hire.api.model.FuelType;
 
 import javax.persistence.*;
 
@@ -18,10 +19,10 @@ public class Car {
     private String model;
     private String year;
     private String mileage;
-    private String fuel;
+    private FuelType fuelType;
 
     @JoinColumn
-    private CarClass carClazz;
+    private CarClass carClass;
 
     @JoinColumn
     private StatusCar status;

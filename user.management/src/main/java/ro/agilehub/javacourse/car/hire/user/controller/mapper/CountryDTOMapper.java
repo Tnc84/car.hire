@@ -1,12 +1,16 @@
 package ro.agilehub.javacourse.car.hire.user.controller.mapper;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import ro.agilehub.javacourse.car.hire.api.model.CountryDTO;
-import ro.agilehub.javacourse.car.hire.user.userDomain.CountryDomain;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.CountryDomain;
 
+@Mapper
 public interface CountryDTOMapper {
 
-
+    @Mapping(source = "id", target = "id")
     CountryDTO toCountryDTO(CountryDomain countryDO);
 
-    CountryDomain toCountryDomain(CountryDTO countryDTO);
+    @Mapping(source = "id", target = "id")
+    CountryDomain countryDTOtoCountryDomain(CountryDTO countryDTO);
 }

@@ -1,9 +1,9 @@
 package ro.agilehub.javacourse.car.hire.user.service.mapper;
 
 import org.mapstruct.*;
-import ro.agilehub.javacourse.car.hire.user.entity.User;
-import ro.agilehub.javacourse.car.hire.user.userDomain.CountryDomain;
-import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
+import ro.agilehub.javacourse.car.hire.user.repository.entity.User;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.CountryDomain;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;
 
 import java.util.List;
 

@@ -12,7 +12,7 @@ import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
 import ro.agilehub.javacourse.car.hire.api.specification.UsersApi;
 import ro.agilehub.javacourse.car.hire.user.controller.mapper.UserDTOMapper;
 import ro.agilehub.javacourse.car.hire.user.service.UserService;
-import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -63,7 +63,7 @@ public class UserController implements UsersApi {
     }
 
     @Override
-    public ResponseEntity<UserDTO> deleteUser(Integer id) {
+    public ResponseEntity<Void> deleteUser(Integer id) {
         userService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

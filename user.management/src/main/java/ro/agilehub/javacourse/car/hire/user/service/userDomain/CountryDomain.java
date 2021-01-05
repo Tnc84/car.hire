@@ -1,4 +1,4 @@
-package ro.agilehub.javacourse.car.hire.user.userDomain;
+package ro.agilehub.javacourse.car.hire.user.service.userDomain;
 
 import lombok.Data;
 

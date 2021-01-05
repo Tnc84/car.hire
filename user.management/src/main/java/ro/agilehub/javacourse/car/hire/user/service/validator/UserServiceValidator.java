@@ -3,7 +3,7 @@ package ro.agilehub.javacourse.car.hire.user.service.validator;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ro.agilehub.javacourse.car.hire.user.userDomain.UserDomain;
+import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;
 
 @Component
 public class UserServiceValidator {

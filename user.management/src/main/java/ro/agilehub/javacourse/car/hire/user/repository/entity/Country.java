@@ -1,4 +1,4 @@
-package ro.agilehub.javacourse.car.hire.user.entity;
+package ro.agilehub.javacourse.car.hire.user.repository.entity;
 
 import lombok.Data;
 
