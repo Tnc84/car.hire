@@ -6,4 +6,6 @@ import ro.agilehub.javacourse.car.hire.user.repository.entity.Country;
 
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Integer> {
+
+//    Optional<Country>findByCountryName(String name);
 }
