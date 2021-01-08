@@ -569,7 +569,7 @@ components:
           format: int32
           example: 123500
           description: the approximate mileage when the car is being picked up
-        fuel:
+        fuelType:
           $ref: '#/components/schemas/FuelType'
         carClass:
           $ref: '#/components/schemas/CarClass'

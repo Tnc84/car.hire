@@ -1,4 +1,4 @@
-package ro.agilehub.javacourse.car.hire.user.service;
+package ro.agilehub.javacourse.car.hire.user.service.userService;
 
 import org.springframework.stereotype.Service;
 import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;

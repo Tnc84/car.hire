@@ -9,12 +9,11 @@ import ro.agilehub.javacourse.car.hire.api.model.CreatedDTO;
 import ro.agilehub.javacourse.car.hire.api.model.UserDTO;
 import ro.agilehub.javacourse.car.hire.api.specification.UsersApi;
 import ro.agilehub.javacourse.car.hire.user.controller.mapper.UserDTOMapper;
-import ro.agilehub.javacourse.car.hire.user.service.UserService;
 import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;
+import ro.agilehub.javacourse.car.hire.user.service.userService.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @PreAuthorize("hasAuthority('MANAGER')")
@@ -27,21 +26,13 @@ public class UserController implements UsersApi {
     @GetMapping(value = "/users")
     public ResponseEntity<List<UserDTO>> getUsers() {
         var getUser = userService.findAllUsers();
-        return ResponseEntity.ok(getUser
-                .stream()
-                .map(userDTOMapper::toUserDTO)
-                .collect(Collectors.toList()));
-
-//        return ResponseEntity.ok(userDTOMapper.toUserDTOList(userService.findAllUsers()));
+        return ResponseEntity.ok(userDTOMapper.toUserDTOList(userService.findAllUsers()));
 
     }
 
     @GetMapping(value = "/users/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Integer id) {
-        UserDTO findUser = userDTOMapper.toUserDTO(userService.getById(id));
-        return ResponseEntity.ok(findUser);
-
-//        return ResponseEntity.ok(userDTOMapper.toUserDTO(userService.findById(id)));
+        return ResponseEntity.ok(userDTOMapper.toUserDTO(userService.getById(id)));
     }
 
     @Override

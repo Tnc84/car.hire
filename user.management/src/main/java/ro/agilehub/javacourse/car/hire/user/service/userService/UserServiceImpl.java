@@ -1,4 +1,4 @@
-package ro.agilehub.javacourse.car.hire.user.service;
+package ro.agilehub.javacourse.car.hire.user.service.userService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import ro.agilehub.javacourse.car.hire.user.service.validator.UserServiceValidat
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -27,15 +26,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDomain> findAllUsers() {
-        var findUsers = userRepository.findAll();
+        var findUsers = userDomainMapper.toUserDomainList(userRepository.findAll());
         if (findUsers.isEmpty()) {
             throw new NoSuchElementException();
         }
-        return findUsers.stream().map(userDomainMapper::toDomain)
-                .collect(Collectors.toList());
-
-//        var findUsers = userDomainMapper.toUserDomainList(userRepository.findAll());
-//        return findUsers;
+        return findUsers;
     }
 
     @Override

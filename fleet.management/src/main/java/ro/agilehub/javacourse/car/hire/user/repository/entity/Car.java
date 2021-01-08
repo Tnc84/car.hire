@@ -19,6 +19,8 @@ public class Car {
     private String model;
     private String year;
     private String mileage;
+
+    @JoinColumn
     private FuelType fuelType;
 
     @JoinColumn

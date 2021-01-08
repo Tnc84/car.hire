@@ -1,4 +1,4 @@
-package ro.agilehub.javacourse.car.hire.user.service;
+package ro.agilehub.javacourse.car.hire.user.service.countryService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
