@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: '0001-add-join-date'
+      author: tnc
+      comments: 'Adding a join date to a user, so that they can be evaluated based on age'
+      changes:
+        - addColumn:
+            tableName: user
+            columns:
+              - column:
+                  name: join_date
+                  type: date
+  - changeSet:
+      id: '0002-add-user-auditing'
+      author: tnc
+      comments: 'Adding creation and last modified auditing fields to the user entity'
+      changes:
+        - addColumn:
+            tableName: user
+            columns:
+              - column:
+                  name: created_date
+                  type: timestamp
+              - column:
+                  name: created_by
+                  type: varchar
+              - column:
+                  name: last_modified_date
+                  type: timestamp
+              - column:
+                  name: last_modified_by
+                  type: varchar
+  - changeSet:
+      id: '0003-remove-rental-table'
+      author: tnc
+      comments: 'The rental table is moved to another schema, due to splitting the service into multiple microservices'
+      preConditions:
+        onFail: MARK_RAN
+        tableExists:
+          tableName: rental
+      changes:
+        - dropTable:
+            cascadeConstraints: true
+            tableName: rental
