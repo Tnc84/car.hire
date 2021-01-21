@@ -31,12 +31,12 @@ public class UserController implements UsersApi {
     }
 
     @GetMapping(value = "/users/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Integer id) {
+    public ResponseEntity<UserDTO> getUser(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(userDTOMapper.toUserDTO(userService.getById(id)));
     }
 
     @Override
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<CreatedDTO> addUser(@Valid UserDTO userDTO) {
         UserDomain userDO = userDTOMapper.toNewUserDO(userDTO);
         Integer newUserId = userService.createNewUser(userDO);

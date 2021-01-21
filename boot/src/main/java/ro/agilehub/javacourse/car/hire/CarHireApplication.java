@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@ComponentScan(basePackages = "ro.agilehub.javacourse.carhire")
+@ComponentScan(basePackages = "ro.agilehub.javacourse.car.hire")
 @EnableJpaRepositories
 @EnableTransactionManagement
 @SpringBootApplication
