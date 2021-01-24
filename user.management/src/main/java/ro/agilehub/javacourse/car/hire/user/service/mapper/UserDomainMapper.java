@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = CountryDomain.class)
 public interface UserDomainMapper {
 
-    @Mapping(source = "id", target = "id")
+//    @Mapping(source = "id", target = "id")
     @ValueMapping(source = "ACTIVE", target = "ACTIVE")
     @ValueMapping(source = "DENIED", target = "DELETED")
     UserDomain toDomain(User user);
