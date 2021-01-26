@@ -22,12 +22,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String firstName;
-    private String lastName;
     private String userName;
     private String driverLicense;
     private String email;
-    private String password;
 
     @ManyToOne
     @JoinColumn(name = "country_id")

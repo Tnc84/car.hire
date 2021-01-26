@@ -337,6 +337,26 @@ components:
           type: string
         message:
           type: string
+    BaseUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        password:
+          type: string
+          format: password
+          example: secret
+        firstName:
+          type: string
+          example: Bogdan
+          description: the first name of the user
+        lastName:
+          type: string
+          example: Tancau
+          description: the last name of the user
+        nameAndPassword:
+          $ref: '#/components/schemas/UserDTO'
     UserDTO:
       type: object
       properties:
@@ -352,18 +372,6 @@ components:
         userName:
           type: string
           example: tnc
-        password:
-          type: string
-          format: password
-          example: secret
-        firstName:
-          type: string
-          example: Bogdan
-          description: the first name of the user
-        lastName:
-          type: string
-          example: Tancau
-          description: the last name of the user
         country:
           $ref: '#/components/schemas/CountryDTO'
         driverLicense:
