@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "base_entity")
 @Data
 @EqualsAndHashCode(of = "id")
-public class BaseUser {
+public sealed class BaseEntity permits User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
