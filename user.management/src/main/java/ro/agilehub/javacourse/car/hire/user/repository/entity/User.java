@@ -1,5 +1,6 @@
 package ro.agilehub.javacourse.car.hire.user.repository.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedBy;
@@ -15,7 +16,8 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "user")
 @Data
-@EqualsAndHashCode(of = "id", callSuper = false)
+@EqualsAndHashCode(of = "id")
+@AllArgsConstructor
 public non-sealed class User extends BaseEntity{
 
     @Id

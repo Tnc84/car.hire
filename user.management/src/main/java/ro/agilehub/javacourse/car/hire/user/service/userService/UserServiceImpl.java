@@ -3,12 +3,12 @@ package ro.agilehub.javacourse.car.hire.user.service.userService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ro.agilehub.javacourse.car.hire.user.repository.definition.BaseEntityRepository;
 import ro.agilehub.javacourse.car.hire.user.repository.definition.UserRepository;
 import ro.agilehub.javacourse.car.hire.user.repository.entity.User;
 import ro.agilehub.javacourse.car.hire.user.repository.entity.UserEnum;
 import ro.agilehub.javacourse.car.hire.user.service.mapper.UserDomainMapper;
 import ro.agilehub.javacourse.car.hire.user.service.userDomain.UserDomain;
-import ro.agilehub.javacourse.car.hire.user.service.validator.UserServiceValidator;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDomainMapper userDomainMapper;
     @Autowired
-    UserServiceValidator userServiceValidator;
+    BaseEntityRepository baseEntityRepository;
 
     @Override
     public List<UserDomain> findAllUsers() {
