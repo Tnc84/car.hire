@@ -9,7 +9,7 @@ import ro.agilehub.javacourse.car.hire.user.service.userDomain.CountryDomain;
 public interface CountryDTOMapper {
 
     @Mapping(source = "id", target = "id")
-    CountryDTO toCountryDTO(CountryDomain countryDO);
+    CountryDTO toCountryDTO(CountryDomain countryDomain);
 
     @Mapping(source = "id", target = "id")
     CountryDomain countryDTOtoCountryDomain(CountryDTO countryDTO);
