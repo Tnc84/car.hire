@@ -1,1 +1,1 @@
-# car rental is a modular monolith. This project is developed in Java 15 using the Spring framework and follows the "API first" concept with the DTO pattern. In this project, I use tools like Swagger, Lombok, MapStruct, Sonar, Liquibase, and PostgreSQL.
+# Car hire is a modular monolith. This project is developed in Java 15 using the Spring framework and follows the "API first" concept with the DTO pattern. In this project, I use tools like Swagger, Lombok, MapStruct, Sonar, Liquibase, and PostgreSQL.
